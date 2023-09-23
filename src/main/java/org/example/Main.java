@@ -32,8 +32,8 @@ class Contacts { //создаём класс с HashMap
                 .forEach(e -> {
                     System.out.print(e.getKey() + "\n");
                     contacts.get(e.getKey()).forEach(System.out::println);
-                });
-
+                }
+                );
     }
 }
 
@@ -49,20 +49,17 @@ public class Main {
         Scanner in = new Scanner(System.in);
         String person = "";
 
-        // Заполняем людьми
         while (true) {
-            System.out.println("Enter new record (FirstName MiddleName LastName, Phone): ");
+            System.out.println("Введите контакт по форме (Имя Отчество Фамилия, номер телефона): "); // заполняем людьми
             person = in.nextLine();
             if (person.equalsIgnoreCase("end")){
-                System.out.println("-".repeat(15) + "EXIT" + "-".repeat(15));
+                System.out.println("-".repeat(15) + "Вывод" + "-".repeat(15));
                 break;
             }
-            String[] splittedPerson = person.split(", ");
+            String[] splittedPerson = person.split(", "); //чтобы программа не брала номер телефона
             System.out.println(contacts
-                    .addContact(splittedPerson[0], splittedPerson[1])? "SUCCESS" : "ERROR");
+                    .addContact(splittedPerson[0], splittedPerson[1])? "Успешно" : "Ошибка"); //проверка добавления через тернарник
         }
-
         contacts.print();
-
     }
 }
